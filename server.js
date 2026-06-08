@@ -4,8 +4,10 @@ const {Server} = require('socket.io')
 const cors = require('cors')
 const connectDB = require('./src/config/db')
 
+
 connectDB()
 const httpServer = createServer(app);
+
 
 const io = new Server(httpServer,{
     cors:{
@@ -17,7 +19,7 @@ io.on('connection',(socket)=>{
     console.log('user connected :',socket.id);
 
     socket.on('send_message',(data)=>{
-        io.emit("receive_message", data)
+       return io.emit("receive_message", data)
     })
 
     socket.on('disconnect',()=>{
