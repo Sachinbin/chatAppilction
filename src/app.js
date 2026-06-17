@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path")
+const authRouter = require('./modules/auth/auth.router')
 
 const app = express();
 
@@ -16,6 +17,8 @@ res.sendFile('./public/index.html', { root: __dirname });
 
 
 });
+
+app.use('/api/auth',authRouter)
 
 
 module.exports = app
